@@ -1,4 +1,4 @@
-![Обложка](https://raw.githubusercontent.com/danininxbox2102/dwsp-id-js-example/main/cover.png)
+![Обложка](https://github.com/danininxbox2102/dwsp-id-js-example/blob/main/cover.png?raw=true)
 
 **Реализовано с помощью: <br>**
 * Node js, Typescript <br>
