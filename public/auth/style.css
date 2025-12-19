@@ -1,0 +1,60 @@
+html, body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #1d1d1d;
+}
+
+main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.login{
+
+    button{
+        margin-top: 30px;
+    }
+
+    .modeToggleBtn {
+        margin-top: 30px;
+        cursor: pointer;
+        background: #363636;
+        padding: 10px;
+        border-radius: 5px;
+        color: white;
+        border: none;
+        font-weight: bold;
+    }
+
+    #dwspAuthBtn{
+        margin-top: 30px;
+        cursor: pointer;
+        background: #55a261;
+        padding: 10px;
+        border-radius: 5px;
+        color: white;
+        border: none;
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+    }
+
+    .dwsp-logo{
+        width: 20px;
+        height: 20px;
+        margin-right: 10px;
+        background: url("https://dpkwork.space/svg/dwsp-logo.svg");
+    }
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+

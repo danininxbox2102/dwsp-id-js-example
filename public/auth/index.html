@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>DWSP Id example</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main>
+        <h1>Авторизация</h1>
+        <div class="login">
+            <h2 id="loginTitleEl">Вход в аккаунт</h2>
+            <h2 id="registerTitleEl" style="display: none;">Регистрация</h2>
+            <input type="text" name="username" id="usernameInp" placeholder="Имя пользователя">
+            <input type="password" name="password" id="passwordInp" placeholder="Пароль">
+            <button id="loginSubmitEl" onclick="handleLogin()">Войти</button>
+            <button id="registerSubmitEl" style="display: none" onclick="handleRegister()">Зарегистрироваться</button>
+            <button id="loginModeToggleEl" class="modeToggleBtn" onclick="handleToggleMode()">Создать новый аккаунт</button>
+            <button id="registerModeToggleEl" class="modeToggleBtn" style="display: none" onclick="handleToggleMode()">Войти</button>
+            <button id="dwspAuthBtn" onclick="handleDwspAuthClick()"><span class="dwsp-logo"></span> Войти с помощью dwsp</button>
+        </div>
+    </main>
+    <script src="auth.js"></script>
+    <script language="JavaScript">
+        let mode = "login"
+
+        const updateElements = () => {
+            const loginTitle = document.getElementById("loginTitleEl")
+            const registerTitle = document.getElementById("registerTitleEl")
+
+            const loginModeToggle = document.getElementById("loginModeToggleEl")
+            const registerModeToggle = document.getElementById("registerModeToggleEl")
+
+            const loginSubmit = document.getElementById("loginSubmitEl")
+            const registerSubmit = document.getElementById("registerSubmitEl")
+
+
+            if (mode === "login") {
+                loginSubmit.style.display = "block"
+                registerSubmit.style.display = "none"
+
+                loginTitle.style.display = "block"
+                registerTitle.style.display = "none"
+                loginModeToggle.style.display = "block"
+                registerModeToggle.style.display = "none"
+                return
+            }
+
+            if (mode === "register") {
+                loginSubmit.style.display = "none"
+                registerSubmit.style.display = "block"
+
+                loginTitle.style.display = "none"
+                registerTitle.style.display = "block"
+                loginModeToggle.style.display = "none"
+                registerModeToggle.style.display = "block"
+            }
+        }
+
+        const handleToggleMode = () => {
+            if (mode === "login") {
+                mode = "register"
+                updateElements()
+                return
+            }
+            if (mode === "register") {
+                mode = "login"
+                updateElements()
+            }
+        }
+
+        const handleLogin = () => {
+            const username = document.getElementById("usernameInp").value
+            const password = document.getElementById("passwordInp").value
+
+            if (!username) {
+                alert("Введите имя пользователя")
+                return
+            }
+
+            if (!password) {
+                alert("Введите пароль")
+                return
+            }
+
+            login(username, password)
+        }
+
+        const handleRegister = () => {
+            const username = document.getElementById("usernameInp").value
+            const password = document.getElementById("passwordInp").value
+
+            if (!username) {
+                alert("Введите имя пользователя")
+                return
+            }
+
+            if (!password) {
+                alert("Введите пароль")
+                return
+            }
+
+            register(username, password)
+        }
+
+        const handleDwspAuthClick = () => {
+
+            const clientId = "example-app-id"
+            const redirectUri = "http://localhost:8080/api/oauth/callback"
+
+            const dwspAddr = "https://localhost:5173/auth"
+            const params = `?mode=oauth&client_id=${encodeURI(clientId)}&redirect_uri=${encodeURI(redirectUri)}`
+            window.location.href = dwspAddr+params;
+        }
+
+    </script>
+</body>
+</html>
